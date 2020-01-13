@@ -169,30 +169,21 @@ void SO_Interface::setThrusterGroupLevel(VESSEL2* pVessel, vector<string> params
 	pVessel->SetThrusterGroupLevel(thrusterGroup, level);
 }
 
-void SO_Interface::processComands(string command) {
+void SO_Interface::processComands(vector<string> command) {
 
 
-	try
-	{		
-		vector<string> commandParameters = stringSplit(command);
 		vector<string> commands = {"THRUST"};
 
-		if (commandParameters.size() < 1) {
-			throw "Incorrect command pattern";
+		if (command.size() < 1) {
+			oapiWriteLog("Incorrect command pattern");
+			return;
 		}
 		
-		if (commandParameters.at(0) == commands.at(0)) {
-			setThrusterGroupLevel(getVesselReference(), commandParameters);
+		if (command.at(0) == commands.at(0)) {
+			setThrusterGroupLevel(getVesselReference(), command);
 		} else {
-			throw "Command not exist";
+			oapiWriteLog("Incorrect command pattern");
+			return;
 		}
-
-	}
-	catch (string e)
-	{
-		char *err;
-		sprintf(err, "%s", e);
-		oapiWriteLog(err);
-	}
 
 }

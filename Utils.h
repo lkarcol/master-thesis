@@ -12,4 +12,4 @@ double vector3size(const VECTOR3 &vec);
 
 // Rozdelenie string na |
 // TODO: parametrizovat delimiter
-vector<string> stringSplit(const string str);
+void stringSplit(const string str, string delimiter, vector<string> &vec);

@@ -33,7 +33,7 @@ class SO_Interface {
 
 		// Parsing string from socket and call required function
 		// napr. thrust|1|0.5 - call setThrusterGroupLevel(1,0.5)
-		void processComands(string command);
+		void processComands(vector<string> command);
 
 		// Test log
 		void vesselInfo();
